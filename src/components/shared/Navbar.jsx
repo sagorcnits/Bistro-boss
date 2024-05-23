@@ -7,7 +7,7 @@ const Navbar = () => {
         <h1 className="font-bold md:text-[30px]">BISTRO BOSS</h1>
         <h3 className="md:text-[24px] tracking-[9.12px]">Restaurant</h3>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 font-inter">
         <ul className="hidden items-center gap-4 lg:flex ">
           <NavLink>
             <li>HOME</li>
