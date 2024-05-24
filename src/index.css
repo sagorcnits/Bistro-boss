@@ -19,4 +19,18 @@
   .thumbs {
     margin: auto;
   }
+
+  .button {
+    padding: 10px 30px;
+    border-radius: 10px;
+    border-bottom: 4px solid #d99904;
+    background-color: #e8e8e8;
+    color: #d99904;
+    transition: all 0.5s;
+  }
+
+  .button:hover {
+    background-color: #1f2937;
+    border: none;
+  }
 }

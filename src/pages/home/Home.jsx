@@ -1,8 +1,12 @@
 import chefService from "../../assets/home/chef-service.jpg";
+import Card from "../../components/Card";
+import MenuCard from "../../components/MenuCard";
 import SectionHeader from "../../components/SectionHeader";
 import Banner from "./Banner";
 import OrderSlider from "./OrderSlider";
 const Home = () => {
+  const menu = [1, 2, 3, 4, 5, 6];
+
   return (
     <div>
       <Banner></Banner>
@@ -13,7 +17,10 @@ const Home = () => {
         <div className="mt-10 ">
           <OrderSlider></OrderSlider>
         </div>
-        <div style={{backgroundImage:`url(${chefService})`}} className="flex justify-center items-center md:h-[400px] h-[300px]  mt-14 rounded-lg bg-no-repeat bg-cover bg-center p-2">
+        <div
+          style={{ backgroundImage: `url(${chefService})` }}
+          className="flex justify-center items-center md:h-[400px] h-[300px]  mt-14 rounded-lg bg-no-repeat bg-cover bg-center p-2"
+        >
           <div className="md:w-[80%] mx-auto bg-white border flex justify-center items-center md:px-24 md:py-14 p-2">
             <div className="*:text-center *:text-balance">
               <h1 className="text-[40px] cinzel-font">Bistro Boss</h1>
@@ -25,6 +32,34 @@ const Home = () => {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="max-w-7xl mx-auto px-2 md:px-0 mt-20">
+        <SectionHeader
+          info={{ title: "Check it out", heading: "FROM OUR MENU" }}
+        ></SectionHeader>
+        <div className="mt-10 grid md:grid-cols-2 gap-10">
+          {menu.map((item, id) => (
+            <MenuCard key={id}></MenuCard>
+          ))}
+        </div>
+        <div className="text-center mt-10">
+          <button className="font-inter font-bold border-b-[4px] border-[#1F2937] px-7 py-2 rounded-lg hover:bg-[#1F2937] duration-500 hover:text-white">
+            View Full Menu
+          </button>
+        </div>
+        <div className="h-[250px] bg-[#151515] text-white font-inter flex justify-center items-center text-[40px] mt-10">
+          <h1>Call Us: +88 0192345678910</h1>
+        </div>
+      </section>
+      <section className="max-w-7xl mx-auto px-2 md:px-0 mt-20">
+        <SectionHeader
+          info={{ title: "Should Try", heading: "CHEF RECOMMENDS" }}
+        ></SectionHeader>
+        <div className="grid md:grid-cols lg:grid-cols-3 gap-10 mt-10">
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
         </div>
       </section>
     </div>
