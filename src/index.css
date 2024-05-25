@@ -5,9 +5,13 @@
 @tailwind utilities;
 
 @layer components {
-  /* body {
-    overflow-x: hidden;
-  } */
+  /* tailwind css */
+  .max-width {
+    @apply max-w-7xl mx-auto px-2 md:px-0 mt-20;
+  }
+
+  /* custom css */
+
   .font-inter {
     font-family: "Inter", sans-serif;
   }
@@ -30,6 +34,20 @@
   }
 
   .button:hover {
+    background-color: #1f2937;
+    border: none;
+  }
+
+  .button2 {
+    padding: 10px 30px;
+    border-radius: 10px;
+    border-bottom: 4px solid black;
+    background-color: white;
+    color: #d99904;
+    transition: all 0.5s;
+  }
+
+  .button2:hover {
     background-color: #1f2937;
     border: none;
   }

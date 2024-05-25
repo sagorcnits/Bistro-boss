@@ -36,7 +36,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="max-w-7xl mx-auto px-2 md:px-0 mt-20">
+      <section className="max-width">
         <SectionHeader
           info={{ title: "Check it out", heading: "FROM OUR MENU" }}
         ></SectionHeader>
@@ -54,7 +54,7 @@ const Home = () => {
           <h1>Call Us: +88 0192345678910</h1>
         </div>
       </section>
-      <section className="max-w-7xl mx-auto px-2 md:px-0 mt-20">
+      <section className="max-width">
         <SectionHeader
           info={{ title: "Should Try", heading: "CHEF RECOMMENDS" }}
         ></SectionHeader>
@@ -94,7 +94,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="max-w-7xl mx-auto px-2 md:px-0 mt-20">
+      <section className="max-width">
       <SectionHeader
           info={{ title: "What Our Clients Say", heading: "TESTIMONIALS" }}
         ></SectionHeader>

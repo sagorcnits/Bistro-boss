@@ -37,16 +37,16 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-2 font-inter">
           <ul className="hidden items-center gap-4 lg:flex ">
-            <NavLink>
+            <NavLink to="/">
               <li className="hover:text-[#EEFF25] duration-500">HOME</li>
             </NavLink>
-            <NavLink>
+            <NavLink >
               <li className="hover:text-[#EEFF25] duration-500">CONTACT US</li>
             </NavLink>
             <NavLink>
               <li className="hover:text-[#EEFF25] duration-500">DASHBOARD</li>
             </NavLink>
-            <NavLink>
+            <NavLink to="/menu">
               <li className="hover:text-[#EEFF25] duration-500">OUR MENU</li>
             </NavLink>
             <NavLink>
