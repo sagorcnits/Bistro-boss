@@ -5,6 +5,7 @@ import MenuCard from "../../components/MenuCard";
 import SectionHeader from "../../components/SectionHeader";
 import Banner from "./Banner";
 import OrderSlider from "./OrderSlider";
+import ReviewSlider from "./ReviewSlider";
 const Home = () => {
   const menu = [1, 2, 3, 4, 5, 6];
 
@@ -91,6 +92,14 @@ const Home = () => {
               <button className="button">Read More</button>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="max-w-7xl mx-auto px-2 md:px-0 mt-20">
+      <SectionHeader
+          info={{ title: "What Our Clients Say", heading: "TESTIMONIALS" }}
+        ></SectionHeader>
+        <div className="mt-10">
+           <ReviewSlider></ReviewSlider>
         </div>
       </section>
     </div>

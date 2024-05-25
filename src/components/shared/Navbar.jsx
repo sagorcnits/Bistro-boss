@@ -38,19 +38,19 @@ const Navbar = () => {
         <div className="flex items-center gap-2 font-inter">
           <ul className="hidden items-center gap-4 lg:flex ">
             <NavLink>
-              <li>HOME</li>
+              <li className="hover:text-[#EEFF25] duration-500">HOME</li>
             </NavLink>
             <NavLink>
-              <li>CONTACT US</li>
+              <li className="hover:text-[#EEFF25] duration-500">CONTACT US</li>
             </NavLink>
             <NavLink>
-              <li>DASHBOARD</li>
+              <li className="hover:text-[#EEFF25] duration-500">DASHBOARD</li>
             </NavLink>
             <NavLink>
-              <li>OUR MENU</li>
+              <li className="hover:text-[#EEFF25] duration-500">OUR MENU</li>
             </NavLink>
             <NavLink>
-              <li>OUR SHOP</li>
+              <li className="hover:text-[#EEFF25] duration-500">OUR SHOP</li>
             </NavLink>
           </ul>
           <div className="flex items-center gap-2">
