@@ -1,4 +1,5 @@
 import chefService from "../../assets/home/chef-service.jpg";
+import menuImg from "../../assets/home/featured.jpg";
 import Card from "../../components/Card";
 import MenuCard from "../../components/MenuCard";
 import SectionHeader from "../../components/SectionHeader";
@@ -60,6 +61,36 @@ const Home = () => {
           <Card></Card>
           <Card></Card>
           <Card></Card>
+        </div>
+      </section>
+      <section
+        style={{ backgroundImage: `url(${menuImg})` }}
+        className="mt-20 md:h-[600px] bg-no-repeat bg-cover bg-center flex justify-center items-center   bg-blend-multiply bg-[#555454]"
+      >
+        <div className="max-w-7xl mx-auto px-2 text-white py-10">
+          <SectionHeader
+            info={{ title: "Check it out", heading: "FROM OUR MENU" }}
+          ></SectionHeader>
+          <div className="flex flex-col md:flex-row gap-4 items-center mt-14">
+            <div>
+              <img
+                className="w-[80%] mx-auto rounded-md"
+                src={menuImg}
+                alt=""
+              />
+            </div>
+            <div className="space-y-4 font-inter text-white text-center md:text-start">
+              <h3>March 20, 2023</h3>
+              <h2>WHERE CAN I GET SOME?</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
+                voluptate facere, deserunt dolores maiores quod nobis quas
+                quasi. Eaque repellat recusandae ad laudantium tempore
+                consequatur consequuntur omnis ullam maxime tenetur.
+              </p>
+              <button className="button">Read More</button>
+            </div>
+          </div>
         </div>
       </section>
     </div>
