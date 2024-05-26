@@ -37,13 +37,13 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-2 font-inter">
           <ul className="hidden items-center gap-4 lg:flex ">
-            <NavLink to="/">
+            <NavLink to="/" >
               <li className="hover:text-[#EEFF25] duration-500">HOME</li>
             </NavLink>
-            <NavLink >
+            <NavLink to="/contact">
               <li className="hover:text-[#EEFF25] duration-500">CONTACT US</li>
             </NavLink>
-            <NavLink>
+            <NavLink to="/dashboard">
               <li className="hover:text-[#EEFF25] duration-500">DASHBOARD</li>
             </NavLink>
             <NavLink to="/menu">
@@ -55,7 +55,7 @@ const Navbar = () => {
           </ul>
           <div className="flex items-center gap-2">
             <img className="w-[50px]" src={cartIcon} alt="Cart Icon" />
-            <NavLink>
+            <NavLink to="/login">
               <span>SIGN IN</span>
             </NavLink>
             <div className="avatar online hidden md:flex">
