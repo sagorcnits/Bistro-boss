@@ -49,7 +49,7 @@ const Navbar = () => {
             <NavLink to="/menu">
               <li className="hover:text-[#EEFF25] duration-500">OUR MENU</li>
             </NavLink>
-            <NavLink>
+            <NavLink to="/shop">
               <li className="hover:text-[#EEFF25] duration-500">OUR SHOP</li>
             </NavLink>
           </ul>
