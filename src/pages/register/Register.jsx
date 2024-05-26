@@ -1,25 +1,31 @@
 import { Link } from "react-router-dom";
 import loginBg from "../../assets/others/authentication.png";
 import loginImg from "../../assets/others/authentication2.png";
-const Login = () => {
+const Register = () => {
   return (
     <div
       style={{ backgroundImage: `url(${loginBg})` }}
-      className="bg-cover bg-center bg-no-repeat  flex justify-center items-center px-2 md:px-0"
+      className="bg-cover bg-center bg-no-repeat  flex justify-center items-center px-2 md:px-0 h-screen"
     >
-      <div className="flex flex-col md:flex-row gap-4 *:flex-1 *:w-full items-center border shadow p-4 lg:w-[80%] w-full ">
-        <div>
-          <img className="w-[100%]" src={loginImg} alt="" />
-        </div>
+      <div className="flex flex-col-reverse md:flex-row gap-4 *:flex-1 *:w-full items-center border shadow p-4 lg:w-[80%] w-full ">
         <div>
           <h1 className="text-center text-[#151515] text-[40px] font-bold">
-            Login
+            Sign Up
           </h1>
           <form className=" font-inter md:w-[80%] mx-auto">
             <div className="mt-4">
-              <label>Email</label>
+              <label>Name</label>
               <input
                 type="text"
+                placeholder="Type here"
+                name="name"
+                className="w-full p-3 mt-1 rounded-md focus:outline-[#D99904]  border border-[#D0D0D0] "
+              />
+            </div>
+            <div className="mt-4">
+              <label>Email</label>
+              <input
+                type="email"
                 placeholder="Type here"
                 name="email"
                 className="w-full p-3 mt-1 rounded-md focus:outline-[#D99904]  border border-[#D0D0D0] "
@@ -34,36 +40,17 @@ const Login = () => {
                 className="w-full p-3 mt-1 rounded-md focus:outline-[#D99904]  border border-[#D0D0D0] "
               />
             </div>
-            <div className="mt-4">
-              <input
-                type="text"
-                defaultValue={"U A g l u o "}
-                name="password"
-                className="w-full p-3 mt-1 rounded-md focus:outline-[#D99904]  border border-[#D0D0D0] "
-              />
-              <label className="text-[#5D5FEF] cursor-pointer">
-                Reload Captcha
-              </label>
-            </div>
-            <div className="mt-4">
-              <input
-                type="text"
-                placeholder="Type here"
-                name="email"
-                className="w-full p-3 mt-1 rounded-md focus:outline-[#D99904]  border border-[#D0D0D0] "
-              />
-            </div>
             <button className="bg-[#D1A054B2] py-3 w-full text-white rounded-md mt-4 hover:bg-[#1f2937] duration-500">
-              Sign In
+              Sign Up
             </button>
             <p className="text-[#D1A054] text-center py-4">
-              New here?
-              <Link to="/register" className="font-bold">
-                Create a New Account
+              Already registered?
+              <Link to="/login" className="font-bold">
+                Go to log in
               </Link>
             </p>
             <p className="text-[#444444] font-bold text-center text-[20px]">
-              Or sign in with
+              Or sign Up with
             </p>
             <div className="flex items-center justify-center gap-4 mt-4">
               <div className="hover:bg-[#D1A054B2] hover:border-none duration-500 flex justify-center items-center cursor-pointer size-[54px] rounded-full border-[2px] border-[#444444]">
@@ -125,9 +112,12 @@ const Login = () => {
             </div>
           </form>
         </div>
+        <div>
+          <img className="w-[100%]" src={loginImg} alt="" />
+        </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;
