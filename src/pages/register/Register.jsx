@@ -1,7 +1,38 @@
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 import loginBg from "../../assets/others/authentication.png";
 import loginImg from "../../assets/others/authentication2.png";
+import useAuth from "../../hooks/useAuth";
 const Register = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const { createUser } = useAuth();
+  const navigate = useNavigate()
+
+  const onSubmit = (data) => {
+    const name = data.name;
+    const email = data.email;
+    const password = data.password;
+    const userData = { name, email, password };
+
+    createUser(email, password)
+      .then((res) => {
+        const user = res.user;
+        reset()
+        navigate("/")
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    console.log(userData);
+  };
+
   return (
     <div
       style={{ backgroundImage: `url(${loginBg})` }}
@@ -12,33 +43,59 @@ const Register = () => {
           <h1 className="text-center text-[#151515] text-[40px] font-bold">
             Sign Up
           </h1>
-          <form className=" font-inter md:w-[80%] mx-auto">
+          <form
+            className=" font-inter md:w-[80%] mx-auto"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="mt-4">
               <label>Name</label>
               <input
+                {...register("name", { required: true })}
                 type="text"
                 placeholder="Type here"
                 name="name"
                 className="w-full p-3 mt-1 rounded-md focus:outline-[#D99904]  border border-[#D0D0D0] "
               />
+              {errors.name && (
+                <p className="text-red-500 font-bold font-inter">
+                  This in input Invalid
+                </p>
+              )}
             </div>
             <div className="mt-4">
               <label>Email</label>
               <input
+                {...register("email", { required: true })}
                 type="email"
                 placeholder="Type here"
                 name="email"
                 className="w-full p-3 mt-1 rounded-md focus:outline-[#D99904]  border border-[#D0D0D0] "
               />
+              {errors.email && (
+                <p className="text-red-500 font-bold font-inter">
+                  This in input Invalid
+                </p>
+              )}
             </div>
             <div className="mt-4">
               <label>Password</label>
               <input
+                {...register("password", {
+                  pattern: {
+                    value: /^(?=.*[a-z])(?=.*[A-Z])/,
+                  },
+                  minLength: 6,
+                })}
                 type="password"
                 placeholder="Enter your password"
                 name="password"
                 className="w-full p-3 mt-1 rounded-md focus:outline-[#D99904]  border border-[#D0D0D0] "
               />
+              {errors.password && (
+                <p className="text-red-500 font-bold font-inter">
+                  This in input Invalid
+                </p>
+              )}
             </div>
             <button className="bg-[#D1A054B2] py-3 w-full text-white rounded-md mt-4 hover:bg-[#1f2937] duration-500">
               Sign Up
