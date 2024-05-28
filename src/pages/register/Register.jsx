@@ -1,7 +1,9 @@
+import { updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import loginBg from "../../assets/others/authentication.png";
 import loginImg from "../../assets/others/authentication2.png";
+import { auth } from "../../firebase_config";
 import useAuth from "../../hooks/useAuth";
 const Register = () => {
   const {
@@ -11,20 +13,24 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const { createUser } = useAuth();
-  const navigate = useNavigate()
+  const { createUser, loaded, setLoaded } = useAuth();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     const name = data.name;
     const email = data.email;
     const password = data.password;
+    const photoUrl = data.photoUrl;
     const userData = { name, email, password };
-
     createUser(email, password)
       .then((res) => {
         const user = res.user;
-        reset()
-        navigate("/")
+        updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: photoUrl,
+        });
+        reset();
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
@@ -72,6 +78,21 @@ const Register = () => {
                 className="w-full p-3 mt-1 rounded-md focus:outline-[#D99904]  border border-[#D0D0D0] "
               />
               {errors.email && (
+                <p className="text-red-500 font-bold font-inter">
+                  This in input Invalid
+                </p>
+              )}
+            </div>
+            <div className="mt-4">
+              <label>Photo URL</label>
+              <input
+                {...register("photoUrl", { required: true })}
+                type="text"
+                placeholder="Photo Url"
+                name="photoUrl"
+                className="w-full p-3 mt-1 rounded-md focus:outline-[#D99904]  border border-[#D0D0D0] "
+              />
+              {errors.photoUrl && (
                 <p className="text-red-500 font-bold font-inter">
                   This in input Invalid
                 </p>

@@ -6,7 +6,6 @@ import cartIcon from "../../assets/icon/cart.png";
 import useAuth from "../../hooks/useAuth";
 const Navbar = () => {
   const { user, logOut } = useAuth();
-
   const [isActive, setActive] = useState(true);
   const navRef = useRef();
   const handleSideBar = () => {
@@ -79,16 +78,22 @@ const Navbar = () => {
           </ul>
           <div className="flex items-center gap-2">
             <img className="w-[50px]" src={cartIcon} alt="Cart Icon" />
-           {user ?  <NavLink to="/login">
-              <span onClick={logOut}>SIGN OUT</span>
-            </NavLink> :  <NavLink to="/login">
-              <span>SIGN IN</span>
-            </NavLink>}
-           {user && <div className="avatar online hidden md:flex">
-              <div className="w-[50px] rounded-full">
-                <img src={user?.photoUrl} />
+            {user ? (
+              <NavLink to="/login">
+                <span onClick={logOut}>SIGN OUT</span>
+              </NavLink>
+            ) : (
+              <NavLink to="/login">
+                <span>SIGN IN</span>
+              </NavLink>
+            )}
+            {user && (
+              <div className="avatar online hidden md:flex cursor-pointer">
+                <div className="w-[50px] rounded-full">
+                  <img src={user?.photoURL} />
+                </div>
               </div>
-            </div>}
+            )}
           </div>
         </div>
       </div>
