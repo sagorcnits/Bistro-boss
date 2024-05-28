@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import bannerImg from "../../assets/menu/banner3.jpg";
 import Banner from "../../components/Banner";
 import MenuCard from "../../components/MenuCard";
@@ -6,7 +7,13 @@ import TinyBanner from "./TinyBanner";
 const Menu = () => {
   return (
     <div>
-      <Banner info={{img:bannerImg, title:"OUR MENU", description:"Would you like to try a dish?"}}></Banner>
+      <Banner
+        info={{
+          img: bannerImg,
+          title: "OUR MENU",
+          description: "Would you like to try a dish?",
+        }}
+      ></Banner>
       <section className="max-width">
         <SectionHeader
           info={{ title: "Don't miss", heading: "TODAY'S OFFER" }}
@@ -18,7 +25,9 @@ const Menu = () => {
           <MenuCard></MenuCard>
         </div>
         <div className="text-center mt-10">
-          <button className="button2">ORDER YOUR FAVOURITE FOOD</button>
+          <Link to="/shop">
+            <button className="button2">ORDER YOUR FAVOURITE FOOD</button>
+          </Link>
         </div>
       </section>
       <section className="mt-10">
@@ -38,7 +47,9 @@ const Menu = () => {
             <MenuCard></MenuCard>
           </div>
           <div className="text-center mt-10">
-            <button className="button2">ORDER YOUR FAVOURITE FOOD</button>
+            <Link to="/shop">
+              <button className="button2">ORDER YOUR FAVOURITE FOOD</button>
+            </Link>
           </div>
         </div>
       </section>
@@ -61,7 +72,9 @@ const Menu = () => {
             <MenuCard></MenuCard>
           </div>
           <div className="text-center mt-10">
-            <button className="button2">ORDER YOUR FAVOURITE FOOD</button>
+            <Link to="/shop">
+              <button className="button2">ORDER YOUR FAVOURITE FOOD</button>
+            </Link>
           </div>
         </div>
       </section>
@@ -84,7 +97,9 @@ const Menu = () => {
             <MenuCard></MenuCard>
           </div>
           <div className="text-center mt-10">
-            <button className="button2">ORDER YOUR FAVOURITE FOOD</button>
+            <Link to="/shop">
+              <button className="button2">ORDER YOUR FAVOURITE FOOD</button>
+            </Link>
           </div>
         </div>
       </section>
@@ -107,7 +122,9 @@ const Menu = () => {
             <MenuCard></MenuCard>
           </div>
           <div className="text-center mt-10">
-            <button className="button2">ORDER YOUR FAVOURITE FOOD</button>
+            <Link to="/shop">
+              <button className="button2">ORDER YOUR FAVOURITE FOOD</button>
+            </Link>
           </div>
         </div>
       </section>

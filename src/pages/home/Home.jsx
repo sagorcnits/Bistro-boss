@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import chefService from "../../assets/home/chef-service.jpg";
 import menuImg from "../../assets/home/featured.jpg";
 import Card from "../../components/Card";
@@ -46,9 +47,11 @@ const Home = () => {
           ))}
         </div>
         <div className="text-center mt-10">
-          <button className="font-inter font-bold border-b-[4px] border-[#1F2937] px-7 py-2 rounded-lg hover:bg-[#1F2937] duration-500 hover:text-white">
+         <Link to="/menu">
+         <button className="font-inter font-bold border-b-[4px] border-[#1F2937] px-7 py-2 rounded-lg hover:bg-[#1F2937] duration-500 hover:text-white">
             View Full Menu
           </button>
+         </Link>
         </div>
         <div className="h-[250px] bg-[#151515] text-white font-inter flex justify-center items-center text-[40px] mt-10">
           <h1>Call Us: +88 0192345678910</h1>

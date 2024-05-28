@@ -30,7 +30,7 @@ const Register = () => {
         console.log(error);
       });
 
-    console.log(userData);
+    // console.log(userData);
   };
 
   return (
@@ -97,7 +97,7 @@ const Register = () => {
                 </p>
               )}
             </div>
-            <button className="bg-[#D1A054B2] py-3 w-full text-white rounded-md mt-4 hover:bg-[#1f2937] duration-500">
+            <button className="bg-[#D1A054B2] py-3 w-full text-white rounded-md mt-8 hover:bg-[#1f2937] duration-500">
               Sign Up
             </button>
             <p className="text-[#D1A054] text-center py-4">

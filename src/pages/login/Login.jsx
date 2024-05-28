@@ -1,7 +1,51 @@
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 import loginBg from "../../assets/others/authentication.png";
 import loginImg from "../../assets/others/authentication2.png";
+import useAuth from "../../hooks/useAuth";
+
+import { useEffect } from "react";
+import {
+  LoadCanvasTemplate,
+  loadCaptchaEnginge,
+  validateCaptcha,
+} from "react-simple-captcha";
+
 const Login = () => {
+  const { loginUser } = useAuth();
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
+
+  // login user
+  const onSubmit = (data) => {
+    const email = data.email;
+    const password = data.password;
+    const userCaptcha = data.captcha;
+
+    if (validateCaptcha(userCaptcha)) {
+      loginUser(email, password)
+        .then((res) => {
+          const user = res.user;
+          reset();
+          navigate("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      alert("Captcha Not Valid")
+    }
+  };
+
   return (
     <div
       style={{ backgroundImage: `url(${loginBg})` }}
@@ -15,43 +59,58 @@ const Login = () => {
           <h1 className="text-center text-[#151515] text-[40px] font-bold">
             Login
           </h1>
-          <form className=" font-inter md:w-[80%] mx-auto">
+          <form
+            className=" font-inter md:w-[80%] mx-auto"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="mt-4">
               <label>Email</label>
               <input
+                {...register("email", { required: true })}
                 type="text"
                 placeholder="Type here"
                 name="email"
                 className="w-full p-3 mt-1 rounded-md focus:outline-[#D99904]  border border-[#D0D0D0] "
               />
+              {errors.email && (
+                <p className="text-red-500 font-inter font-bold">
+                  Email is Invalid
+                </p>
+              )}
             </div>
             <div className="mt-4">
               <label>Password</label>
               <input
+                {...register("password", { required: true })}
                 type="password"
                 placeholder="Enter your password"
                 name="password"
                 className="w-full p-3 mt-1 rounded-md focus:outline-[#D99904]  border border-[#D0D0D0] "
               />
+              {errors.password && (
+                <p className="text-red-500 font-inter font-bold">
+                  Password is Invalid
+                </p>
+              )}
             </div>
             <div className="mt-4">
-              <input
-                type="text"
-                defaultValue={"U A g l u o "}
-                name="password"
-                className="w-full p-3 mt-1 rounded-md focus:outline-[#D99904]  border border-[#D0D0D0] "
-              />
               <label className="text-[#5D5FEF] cursor-pointer">
-                Reload Captcha
+                <LoadCanvasTemplate />
               </label>
             </div>
             <div className="mt-4">
               <input
+                {...register("captcha", { required: true })}
                 type="text"
                 placeholder="Type here"
-                name="email"
+                name="captcha"
                 className="w-full p-3 mt-1 rounded-md focus:outline-[#D99904]  border border-[#D0D0D0] "
               />
+              {errors.captcha && (
+                <p className="text-red-500 font-inter font-bold">
+                  Captcha is Invalid
+                </p>
+              )}
             </div>
             <button className="bg-[#D1A054B2] py-3 w-full text-white rounded-md mt-4 hover:bg-[#1f2937] duration-500">
               Sign In

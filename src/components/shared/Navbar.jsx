@@ -3,7 +3,10 @@ import { FaBars } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import cartIcon from "../../assets/icon/cart.png";
+import useAuth from "../../hooks/useAuth";
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+
   const [isActive, setActive] = useState(true);
   const navRef = useRef();
   const handleSideBar = () => {
@@ -31,32 +34,61 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-2 font-inter">
           <ul className="hidden items-center gap-4 lg:flex ">
-            <NavLink to="/">
+            <NavLink
+              to="/"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : ""
+              }
+            >
               <li className="hover:text-[#EEFF25] duration-500">HOME</li>
             </NavLink>
-            <NavLink to="/contact">
+            <NavLink
+              to="/contact"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : ""
+              }
+            >
               <li className="hover:text-[#EEFF25] duration-500">CONTACT US</li>
             </NavLink>
-            <NavLink to="/dashboard">
-              <li className="hover:text-[#EEFF25] duration-500">DASHBOARD</li>
-            </NavLink>
-            <NavLink to="/menu">
+            {user && (
+              <NavLink
+                to="/dashboard"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active" : ""
+                }
+              >
+                <li className="hover:text-[#EEFF25] duration-500">DASHBOARD</li>
+              </NavLink>
+            )}
+            <NavLink
+              to="/menu"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : ""
+              }
+            >
               <li className="hover:text-[#EEFF25] duration-500">OUR MENU</li>
             </NavLink>
-            <NavLink to="/shop">
+            <NavLink
+              to="/shop"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : ""
+              }
+            >
               <li className="hover:text-[#EEFF25] duration-500">OUR SHOP</li>
             </NavLink>
           </ul>
           <div className="flex items-center gap-2">
             <img className="w-[50px]" src={cartIcon} alt="Cart Icon" />
-            <NavLink to="/login">
+           {user ?  <NavLink to="/login">
+              <span onClick={logOut}>SIGN OUT</span>
+            </NavLink> :  <NavLink to="/login">
               <span>SIGN IN</span>
-            </NavLink>
-            <div className="avatar online hidden md:flex">
+            </NavLink>}
+           {user && <div className="avatar online hidden md:flex">
               <div className="w-[50px] rounded-full">
-                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                <img src={user?.photoUrl} />
               </div>
-            </div>
+            </div>}
           </div>
         </div>
       </div>
