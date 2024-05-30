@@ -4,11 +4,15 @@ import menuImg from "../../assets/home/featured.jpg";
 import Card from "../../components/Card";
 import MenuCard from "../../components/MenuCard";
 import SectionHeader from "../../components/SectionHeader";
+import useMenu from "../../hooks/useMenu";
 import Banner from "./Banner";
 import OrderSlider from "./OrderSlider";
 import ReviewSlider from "./ReviewSlider";
 const Home = () => {
-  const menu = [1, 2, 3, 4, 5, 6];
+
+const [menu,loading] = useMenu();
+const pupoler = menu.filter(item => item.category === "popular");
+
 
   return (
     <div>
@@ -42,8 +46,8 @@ const Home = () => {
           info={{ title: "Check it out", heading: "FROM OUR MENU" }}
         ></SectionHeader>
         <div className="mt-10 grid md:grid-cols-2 gap-10">
-          {menu.map((item, id) => (
-            <MenuCard key={id}></MenuCard>
+          {loading ? <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600 mx-auto"></div> : pupoler.map((item, id) => (
+            <MenuCard key={id} item={item}></MenuCard>
           ))}
         </div>
         <div className="text-center mt-10">
@@ -62,9 +66,7 @@ const Home = () => {
           info={{ title: "Should Try", heading: "CHEF RECOMMENDS" }}
         ></SectionHeader>
         <div className="grid md:grid-cols lg:grid-cols-3 gap-10 mt-10">
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
+          {loading ? <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600 mx-auto"></div> :pupoler?.slice(0,3).map((item,id) => <Card key={id} item={item}></Card>)}
         </div>
       </section>
       <section

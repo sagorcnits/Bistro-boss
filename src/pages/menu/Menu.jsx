@@ -1,10 +1,18 @@
-import { Link } from "react-router-dom";
 import bannerImg from "../../assets/menu/banner3.jpg";
 import Banner from "../../components/Banner";
-import MenuCard from "../../components/MenuCard";
+
 import SectionHeader from "../../components/SectionHeader";
+import useMenu from "../../hooks/useMenu";
+import MenuCategory from "./MenuCategory";
 import TinyBanner from "./TinyBanner";
 const Menu = () => {
+  const [menu, ] = useMenu();
+
+  const salad = menu.filter((item) => item.category === "salad");
+  const pizza = menu.filter((item) => item.category === "pizza");
+  const soup = menu.filter((item) => item.category === "soup");
+  const dessert = menu.filter((item) => item.category === "dessert");
+  const drinks = menu.filter((item) => item.category === "drinks");
   return (
     <div>
       <Banner
@@ -18,17 +26,7 @@ const Menu = () => {
         <SectionHeader
           info={{ title: "Don't miss", heading: "TODAY'S OFFER" }}
         ></SectionHeader>
-        <div className="mt-20 grid md:grid-cols-2 gap-10">
-          <MenuCard></MenuCard>
-          <MenuCard></MenuCard>
-          <MenuCard></MenuCard>
-          <MenuCard></MenuCard>
-        </div>
-        <div className="text-center mt-10">
-          <Link to="/shop">
-            <button className="button2">ORDER YOUR FAVOURITE FOOD</button>
-          </Link>
-        </div>
+        <MenuCategory items={salad}></MenuCategory>
       </section>
       <section className="mt-10">
         <TinyBanner
@@ -38,19 +36,7 @@ const Menu = () => {
           }
         ></TinyBanner>
         <div className="max-width">
-          <div className="mt-20 grid md:grid-cols-2 gap-10">
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-          </div>
-          <div className="text-center mt-10">
-            <Link to="/shop">
-              <button className="button2">ORDER YOUR FAVOURITE FOOD</button>
-            </Link>
-          </div>
+          <MenuCategory items={pizza}></MenuCategory>
         </div>
       </section>
       <section className="mt-10">
@@ -61,21 +47,7 @@ const Menu = () => {
           }
         ></TinyBanner>
         <div className="max-width">
-          <div className="mt-20 grid md:grid-cols-2 gap-10">
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-          </div>
-          <div className="text-center mt-10">
-            <Link to="/shop">
-              <button className="button2">ORDER YOUR FAVOURITE FOOD</button>
-            </Link>
-          </div>
+          <MenuCategory items={soup}></MenuCategory>
         </div>
       </section>
       <section className="mt-10">
@@ -86,21 +58,7 @@ const Menu = () => {
           }
         ></TinyBanner>
         <div className="max-width">
-          <div className="mt-20 grid md:grid-cols-2 gap-10">
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-          </div>
-          <div className="text-center mt-10">
-            <Link to="/shop">
-              <button className="button2">ORDER YOUR FAVOURITE FOOD</button>
-            </Link>
-          </div>
+          <MenuCategory items={dessert}></MenuCategory>
         </div>
       </section>
       <section className="mt-10">
@@ -111,21 +69,7 @@ const Menu = () => {
           }
         ></TinyBanner>
         <div className="max-width">
-          <div className="mt-20 grid md:grid-cols-2 gap-10">
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-            <MenuCard></MenuCard>
-          </div>
-          <div className="text-center mt-10">
-            <Link to="/shop">
-              <button className="button2">ORDER YOUR FAVOURITE FOOD</button>
-            </Link>
-          </div>
+          <MenuCategory items={drinks}></MenuCategory>
         </div>
       </section>
     </div>

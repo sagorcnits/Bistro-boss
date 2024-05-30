@@ -17,6 +17,7 @@ const Navbar = () => {
     }
   };
 
+
   return (
     <>
       <div className="flex justify-between items-center py-4 px-2 md:px-14 bg-[rgba(21,21,21,0.50)] fixed left-0 right-0 opacity-[0.9] z-50 text-white">

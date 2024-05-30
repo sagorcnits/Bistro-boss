@@ -36,7 +36,7 @@ const Login = () => {
         .then((res) => {
           const user = res.user;
           reset();
-          navigate("/");
+          navigate();
         })
         .catch((error) => {
           console.log(error);
