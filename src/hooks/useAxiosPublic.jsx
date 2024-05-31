@@ -1,12 +1,12 @@
 import axios from "axios";
 
 export const axiosPublice = axios.create({
-  baseURL: "http://localhost:5000/",
+  baseURL: "http://localhost:5000",
 });
 
 const useAxiosPublic = () => {
     
-    return [axiosPublice];
+    return axiosPublice;
 };
 
 export default useAxiosPublic;

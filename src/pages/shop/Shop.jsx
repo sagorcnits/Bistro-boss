@@ -1,14 +1,17 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import bannerImg from "../../assets/shop/banner2.jpg";
 import Banner from "../../components/Banner";
+
 import Card from "../../components/Card";
 import useMenu from "../../hooks/useMenu";
-import ShopCard from "./ShopCard";
 const Shop = () => {
   const categories = ["Salad", "pizza", "soups","desserts","drinks"]
-  const initialIndex = categories.indexOf("pizza")
+  const {category} = useParams()
+// console.log(category)
+  const initialIndex = categories.indexOf(category)
   const [tabIndex,setTabIndex] = useState(initialIndex)
   const [menu] = useMenu();
   const salad = menu.filter((item) => item.category === "salad");
@@ -39,14 +42,14 @@ const Shop = () => {
           <TabPanel>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
               {salad.slice(0, 4)?.map((item, id) => (
-                <ShopCard key={id} item={item}></ShopCard>
+                <Card key={id} item={item}></Card>
               ))}
             </div>
           </TabPanel>
           <TabPanel>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
             {pizza.slice(0, 4)?.map((item, id) => (
-                <ShopCard key={id} item={item}></ShopCard>
+                <Card key={id} item={item}></Card>
               ))}
             </div>
           </TabPanel>
@@ -60,14 +63,14 @@ const Shop = () => {
           <TabPanel>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
             {dessert.slice(0, 4)?.map((item, id) => (
-                <ShopCard key={id} item={item}></ShopCard>
+                <Card key={id} item={item}></Card>
               ))}
             </div>
           </TabPanel>
           <TabPanel>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
             {drinks.slice(0, 4)?.map((item, id) => (
-                <ShopCard key={id} item={item}></ShopCard>
+                <Card key={id} item={item}></Card>
               ))}
             </div>
           </TabPanel>

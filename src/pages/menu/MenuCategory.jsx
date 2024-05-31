@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import MenuCard from "../../components/MenuCard";
 import useMenu from "../../hooks/useMenu";
 
-const MenuCategory = ({ items }) => {
+const MenuCategory = ({ items ,title}) => {
   const [menu,loading] = useMenu();
-  console.log(loading);
+//   console.log(title);
   return (
     <>
       {loading ? (
@@ -17,7 +17,7 @@ const MenuCategory = ({ items }) => {
             ))}
           </div>
           <div className="text-center mt-10">
-            <Link to={`/shop`}>
+            <Link to={`/shop/${title}`}>
               <button className="button2">ORDER YOUR FAVOURITE FOOD</button>
             </Link>
           </div>

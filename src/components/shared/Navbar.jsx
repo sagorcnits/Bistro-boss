@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import { FaBars } from "react-icons/fa";
+import { GrCart } from "react-icons/gr";
 import { IoClose } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
-import cartIcon from "../../assets/icon/cart.png";
 import useAuth from "../../hooks/useAuth";
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -16,7 +16,6 @@ const Navbar = () => {
       navRef.current.style.left = "-300px";
     }
   };
-
 
   return (
     <>
@@ -69,7 +68,7 @@ const Navbar = () => {
               <li className="hover:text-[#EEFF25] duration-500">OUR MENU</li>
             </NavLink>
             <NavLink
-              to="/shop"
+              to={`/shop/Salad`}
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : ""
               }
@@ -78,7 +77,13 @@ const Navbar = () => {
             </NavLink>
           </ul>
           <div className="flex items-center gap-2">
-            <img className="w-[50px]" src={cartIcon} alt="Cart Icon" />
+            <div className="size-[50px] rounded-full  flex justify-center items-center cursor-pointer relative">
+              <GrCart className="text-[30px]"></GrCart>
+              <div className="absolute top-0 right-2 text-[#D50100] text-[20px] font-inter font-bold">
+                 1
+              </div>
+            </div>
+
             {user ? (
               <NavLink to="/login">
                 <span onClick={logOut}>SIGN OUT</span>

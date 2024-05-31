@@ -26,7 +26,7 @@ const Menu = () => {
         <SectionHeader
           info={{ title: "Don't miss", heading: "TODAY'S OFFER" }}
         ></SectionHeader>
-        <MenuCategory items={salad}></MenuCategory>
+        <MenuCategory items={salad} title={'salad'}></MenuCategory>
       </section>
       <section className="mt-10">
         <TinyBanner
@@ -36,7 +36,7 @@ const Menu = () => {
           }
         ></TinyBanner>
         <div className="max-width">
-          <MenuCategory items={pizza}></MenuCategory>
+          <MenuCategory items={pizza} title={'desserts'}></MenuCategory>
         </div>
       </section>
       <section className="mt-10">
@@ -47,7 +47,7 @@ const Menu = () => {
           }
         ></TinyBanner>
         <div className="max-width">
-          <MenuCategory items={soup}></MenuCategory>
+          <MenuCategory items={soup} title={'pizza'}></MenuCategory>
         </div>
       </section>
       <section className="mt-10">
@@ -58,7 +58,7 @@ const Menu = () => {
           }
         ></TinyBanner>
         <div className="max-width">
-          <MenuCategory items={dessert}></MenuCategory>
+          <MenuCategory items={dessert} title={'salad'}></MenuCategory>
         </div>
       </section>
       <section className="mt-10">
@@ -69,7 +69,7 @@ const Menu = () => {
           }
         ></TinyBanner>
         <div className="max-width">
-          <MenuCategory items={drinks}></MenuCategory>
+          <MenuCategory items={drinks} title={'soups'}></MenuCategory>
         </div>
       </section>
     </div>

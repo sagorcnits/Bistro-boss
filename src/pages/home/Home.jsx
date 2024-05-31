@@ -9,10 +9,8 @@ import Banner from "./Banner";
 import OrderSlider from "./OrderSlider";
 import ReviewSlider from "./ReviewSlider";
 const Home = () => {
-
-const [menu,loading] = useMenu();
-const pupoler = menu.filter(item => item.category === "popular");
-
+  const [menu, loading] = useMenu();
+  const pupoler = menu.filter((item) => item.category === "popular");
 
   return (
     <div>
@@ -46,16 +44,20 @@ const pupoler = menu.filter(item => item.category === "popular");
           info={{ title: "Check it out", heading: "FROM OUR MENU" }}
         ></SectionHeader>
         <div className="mt-10 grid md:grid-cols-2 gap-10">
-          {loading ? <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600 mx-auto"></div> : pupoler.map((item, id) => (
-            <MenuCard key={id} item={item}></MenuCard>
-          ))}
+          {loading ? (
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600 mx-auto"></div>
+          ) : (
+            pupoler.map((item, id) => (
+              <MenuCard key={id} item={item}></MenuCard>
+            ))
+          )}
         </div>
         <div className="text-center mt-10">
-         <Link to="/menu">
-         <button className="font-inter font-bold border-b-[4px] border-[#1F2937] px-7 py-2 rounded-lg hover:bg-[#1F2937] duration-500 hover:text-white">
-            View Full Menu
-          </button>
-         </Link>
+          <Link to="/menu">
+            <button className="font-inter font-bold border-b-[4px] border-[#1F2937] px-7 py-2 rounded-lg hover:bg-[#1F2937] duration-500 hover:text-white">
+              View Full Menu
+            </button>
+          </Link>
         </div>
         <div className="h-[250px] bg-[#151515] text-white font-inter flex justify-center items-center text-[40px] mt-10">
           <h1>Call Us: +88 0192345678910</h1>
@@ -66,7 +68,13 @@ const pupoler = menu.filter(item => item.category === "popular");
           info={{ title: "Should Try", heading: "CHEF RECOMMENDS" }}
         ></SectionHeader>
         <div className="grid md:grid-cols lg:grid-cols-3 gap-10 mt-10">
-          {loading ? <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600 mx-auto"></div> :pupoler?.slice(0,3).map((item,id) => <Card key={id} item={item}></Card>)}
+          {loading ? (
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600 mx-auto"></div>
+          ) : (
+            pupoler
+              ?.slice(0, 3)
+              .map((item, id) => <Card key={id} item={item}></Card>)
+          )}
         </div>
       </section>
       <section
@@ -100,11 +108,11 @@ const pupoler = menu.filter(item => item.category === "popular");
         </div>
       </section>
       <section className="max-width">
-      <SectionHeader
+        <SectionHeader
           info={{ title: "What Our Clients Say", heading: "TESTIMONIALS" }}
         ></SectionHeader>
         <div className="mt-10">
-           <ReviewSlider></ReviewSlider>
+          <ReviewSlider></ReviewSlider>
         </div>
       </section>
     </div>
