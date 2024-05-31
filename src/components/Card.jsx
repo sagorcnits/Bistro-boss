@@ -2,11 +2,13 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import useCart from "../hooks/useCart";
 
 const Card = ({ item }) => {
   const { name, image, recipe, price, _id } = item;
   const { user } = useAuth();
   const axiosBase = useAxiosPublic();
+const [,refetch] = useCart()
   const navigate = useNavigate();
   const handleAddItem = () => {
     if (user && user.email) {
@@ -25,6 +27,7 @@ const Card = ({ item }) => {
         .then((res) => {
           const data = res.data;
           if (data.insertedId) {
+            refetch()
             Swal.fire({
               icon: "success",
               title: "Your work has been saved",

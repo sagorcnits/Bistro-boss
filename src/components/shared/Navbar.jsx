@@ -2,12 +2,15 @@ import { useRef, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { GrCart } from "react-icons/gr";
 import { IoClose } from "react-icons/io5";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import useCart from "../../hooks/useCart";
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [isActive, setActive] = useState(true);
   const navRef = useRef();
+  const [cart] = useCart();
+  const navigate = useNavigate();
   const handleSideBar = () => {
     setActive(!isActive);
     if (isActive) {
@@ -77,10 +80,13 @@ const Navbar = () => {
             </NavLink>
           </ul>
           <div className="flex items-center gap-2">
-            <div className="size-[50px] rounded-full  flex justify-center items-center cursor-pointer relative">
+            <div
+              onClick={() => navigate("/dashboard/home")}
+              className="size-[50px] rounded-full  flex justify-center items-center cursor-pointer relative"
+            >
               <GrCart className="text-[30px]"></GrCart>
-              <div className="absolute top-0 right-2 text-[#D50100] text-[20px] font-inter font-bold">
-                 1
+              <div className="absolute top-0 right-2 text-green-500 text-[20px] font-inter font-bold">
+                {cart.length}
               </div>
             </div>
 
