@@ -1,8 +1,10 @@
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../../../hooks/useAdmin";
 
 const Dashboard = () => {
   // todo : get the database admin
-  const isAdmin = true;
+  const [admin] = useAdmin();
+  // console.log(admin)
   return (
     <div className="flex gap-2 ">
       <div className="h-screen  bg-[rgb(209,160,84)] w-[20%] p-4">
@@ -13,7 +15,8 @@ const Dashboard = () => {
           </h3>
         </div>
         <ul className="*:py-2 *:px-6">
-          {isAdmin ? (
+          {admin ? (
+
             <>
               {" "}
               <li>

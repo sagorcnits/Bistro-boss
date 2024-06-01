@@ -61,10 +61,10 @@ const Users = () => {
             <tbody>
               {users?.map((user, id) => {
                 return (
-                  <tr>
+                  <tr key={id}>
                     <td>{id + 1}</td>
                     <td>{user.name}</td>
-                    <td>${user.email}</td>
+                    <td>{user.email}</td>
                     <td>
                      {user.role == "admin" ? "Admin" : <button
                         onClick={() => handleUpdate(user)}

@@ -81,7 +81,7 @@ const Navbar = () => {
           </ul>
           <div className="flex items-center gap-2">
             <div
-              onClick={() => navigate("/dashboard/home")}
+              onClick={() => navigate("/dashboard")}
               className="size-[50px] rounded-full  flex justify-center items-center cursor-pointer relative"
             >
               <GrCart className="text-[30px]"></GrCart>

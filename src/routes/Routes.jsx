@@ -15,6 +15,7 @@ import Login from "../pages/login/Login";
 import Menu from "../pages/menu/Menu";
 import Register from "../pages/register/Register";
 import Shop from "../pages/shop/Shop";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -89,23 +90,23 @@ const router = createBrowserRouter([
       // admin route
       {
         path: "adminHome",
-        element: <h1>Admin Home</h1>,
+        element:<AdminRoute><h1>Admin Home</h1></AdminRoute> ,
       },
       {
         path: "addItems",
-        element: <h1>Admin add</h1>,
+        element:<AdminRoute><h1>Admin add</h1></AdminRoute>,
       },
       {
         path: "manageItems",
-        element: <h1>Admin itens</h1>,
+        element: <AdminRoute><h1>Admin items</h1></AdminRoute>,
       },
       {
         path: "manageBookins",
-        element: <h1>Admin bookins</h1>,
+        element: <AdminRoute><h1>Admin Bookings</h1></AdminRoute>,
       },
       {
         path: "allUsers",
-        element: <Users></Users>
+        element: <AdminRoute><Users></Users></AdminRoute>
       },
     ],
   },
