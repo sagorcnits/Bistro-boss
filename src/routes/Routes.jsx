@@ -1,7 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
+import PrivateRoute from "../components/PrivateRoute";
 import Root from "../layout/Root";
 import Contact from "../pages/contact/Contact";
 import AddReview from "../pages/dashboard/addReview/AddReview";
+import Users from "../pages/dashboard/allUsers/Users";
 import Booking from "../pages/dashboard/booking/Booking";
 import Dashboard from "../pages/dashboard/dashboard/Dashboard";
 import HomeDash from "../pages/dashboard/dashboardHome/HomeDash";
@@ -53,39 +55,58 @@ const router = createBrowserRouter([
 
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "home",
-        element:<HomeDash></HomeDash>,
+        element: <HomeDash></HomeDash>,
       },
-
       {
         path: "reservation",
         element: <Reservation></Reservation>,
       },
-
       {
         path: "payment",
         element: <Payment></Payment>,
       },
-
       {
         path: "myCart",
         element: <MyCart></MyCart>,
       },
-
       {
         path: "addReview",
         element: <AddReview></AddReview>,
       },
-
       {
         path: "myBooking",
         element: <Booking></Booking>,
       },
 
-      
+      // admin route
+      {
+        path: "adminHome",
+        element: <h1>Admin Home</h1>,
+      },
+      {
+        path: "addItems",
+        element: <h1>Admin add</h1>,
+      },
+      {
+        path: "manageItems",
+        element: <h1>Admin itens</h1>,
+      },
+      {
+        path: "manageBookins",
+        element: <h1>Admin bookins</h1>,
+      },
+      {
+        path: "allUsers",
+        element: <Users></Users>
+      },
     ],
   },
 ]);

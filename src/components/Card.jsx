@@ -14,7 +14,7 @@ const [,refetch] = useCart()
     if (user && user.email) {
       const cartItem = {
         userName: user.displayName,
-        user: user.email,
+        userEmail: user.email,
         id: _id,
         name,
         image,

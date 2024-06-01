@@ -5,6 +5,7 @@ import loginBg from "../../assets/others/authentication.png";
 import loginImg from "../../assets/others/authentication2.png";
 import { auth } from "../../firebase_config";
 import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 const Register = () => {
   const {
     register,
@@ -12,7 +13,7 @@ const Register = () => {
     reset,
     formState: { errors },
   } = useForm();
-
+const axiosBase = useAxiosPublic()
   const { createUser, loaded, setLoaded } = useAuth();
   const navigate = useNavigate();
 
@@ -21,9 +22,10 @@ const Register = () => {
     const email = data.email;
     const password = data.password;
     const photoUrl = data.photoUrl;
-    const userData = { name, email, password };
+    const userData = { name, email};
     createUser(email, password)
       .then((res) => {
+        setLoaded(!loaded);
         const user = res.user;
         updateProfile(auth.currentUser, {
           displayName: name,
@@ -31,6 +33,7 @@ const Register = () => {
         });
         reset();
         navigate("/");
+        axiosBase.post("/users", userData).then(res => console.log(res.data)).catch(error => console.log(error))
       })
       .catch((error) => {
         console.log(error);

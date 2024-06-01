@@ -1,18 +1,33 @@
+import { useQuery } from "@tanstack/react-query";
+import { FaUser } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import SectionHeader from "../../../components/SectionHeader";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import useCart from "../../../hooks/useCart";
 
-const MyCart = () => {
-  const [cart, refetch] = useCart();
+const Users = () => {
   const axiosBase = useAxiosPublic();
-  const totalPrice = cart.reduce((total, item) => {
-    return total + item.price;
-  }, 0);
+
+  const { data: users = [], refetch } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosBase.get("/users");
+      return res.data;
+    },
+  });
+
+  const handleUpdate = (user) => {
+    axiosBase
+      .put(`/users/${user._id}`)
+      .then((res) => {
+        refetch();
+        console.log(res.data)
+      })
+      .catch((error) => console.log(error));
+  };
 
   const handleDelete = (_id) => {
     axiosBase
-      .delete(`/userItem/${_id}`)
+      .delete(`/users/${_id}`)
       .then((res) => {
         refetch();
         console.log(res.data);
@@ -25,13 +40,11 @@ const MyCart = () => {
   return (
     <div className="mt-10">
       <SectionHeader
-        info={{ title: "My Cart", heading: "WANNA ADD MORE?" }}
+        info={{ title: "-How many??", heading: "MANAGE ALL USERS" }}
       ></SectionHeader>
       <div className="w-[70%] mx-auto bg-[#dfdbdb] p-6 mt-10">
         <div className="flex justify-between *:text-2xl *:font-inter *:font-bold">
-          <h1>Total orders: {cart.length}</h1>
-          <h1>Total Price: ${totalPrice}</h1>
-          <button className="button2 border-none">Pay</button>
+          <h1>Total User: {users?.length}</h1>
         </div>
         <div className="overflow-x-auto mt-10">
           <table className="table font-inter">
@@ -39,32 +52,30 @@ const MyCart = () => {
             <thead>
               <tr>
                 <th></th>
-                <th>ITEM IMAGE</th>
-                <th>ITEM NAME</th>
-                <th>PRICE</th>
+                <th>Name</th>
+                <th>EMAIL</th>
+                <th>ROLE</th>
                 <th>ACTION</th>
               </tr>
             </thead>
             <tbody>
-              {cart?.map((item, id) => {
+              {users?.map((user, id) => {
                 return (
                   <tr>
                     <td>{id + 1}</td>
+                    <td>{user.name}</td>
+                    <td>${user.email}</td>
                     <td>
-                      <div className="avatar">
-                        <div className="mask mask-squircle w-12 h-12">
-                          <img
-                            src={item.image}
-                            alt="Avatar Tailwind CSS Component"
-                          />
-                        </div>
-                      </div>
+                     {user.role == "admin" ? "Admin" : <button
+                        onClick={() => handleUpdate(user)}
+                        className="text-[30px] text-red-600"
+                      >
+                        <FaUser></FaUser>
+                      </button>}
                     </td>
-                    <td>{item.name}</td>
-                    <td>${item.price}</td>
                     <td>
                       <button
-                        onClick={() => handleDelete(item._id)}
+                        onClick={() => handleDelete(user._id)}
                         className="text-[30px] text-red-600"
                       >
                         <MdDeleteForever></MdDeleteForever>
@@ -81,4 +92,4 @@ const MyCart = () => {
   );
 };
 
-export default MyCart;
+export default Users;
